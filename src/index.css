@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@layer utilities {
+  @keyframes resize {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 20rem;
+    }
+
+  }
+  
+  .animate-resize {
+    animation: resize 1s linear 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes move-cursor {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(20rem);
+    }
+  }
+
+  .animate-cursor-1 {
+    animation: move-cursor 1s linear 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+
+}
+
+
+
+body, html {
+  margin: 0; 
+  background: #2f3e46;
+}

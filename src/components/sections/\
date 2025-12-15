@@ -1,0 +1,18 @@
+
+import { FaAngleRight } from "react-icons/fa6";
+import { FaBatteryHalf } from "react-icons/fa";
+
+export const Home = () => {
+  return (
+    <section className = "h-screen">
+      <div className = "flex flex-col items-align h-screen items-center justify-center gap-4 ">
+        <div className = "flex flex-row justify-start w-screen">
+          <h1 className = "bg-[#55bd5c] py-4 px-10 rounded-xl text-8xl text-white font-mono font-bold">Liam</h1>
+          <h1 className = "bg-[#55bd5c] py-4  w-0 rounded-r-xl text-8xl overflow-hidden text-white font-mono font-bold animate-resize">Wadek</h1>
+        </div>
+          <h2 className = "bg-[#a655bd] py-4 px-5 text-6xl rounded-xl text-white font-mono font-bold">Film Freelancer</h2>
+      </div> 
+
+    </section>
+  )
+}
