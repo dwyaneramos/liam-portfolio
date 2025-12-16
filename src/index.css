@@ -13,23 +13,22 @@
   
   .animate-resize {
     animation: resize 1s linear 1;
-    animation-delay: 2.5s;
     animation-fill-mode: forwards;
   }
 
   @keyframes move-cursor-one {
     0% {
-      transform: translateX(0);
+      transform: translateX(100vw);
     }
 
     100% {
-      transform: translateX(-60vw);
+      transform: translateX(0);
     }
   }
 
   .animate-cursor-1 {
     animation: move-cursor-one 1s linear 1;
-    animation-delay: 1s;
+    animation-delay: 0s;
     animation-fill-mode: forwards;
   }
 
@@ -47,6 +46,54 @@
   .animate-cursor-2 {
     animation: move-cursor-two 1s linear 1;
     animation-fill-mode: forwards;
+  }
+
+  @keyframes move-cursor-three {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(100vw);
+    }
+  }
+
+  .animate-cursor-3 {
+    animation: move-cursor-three 1s linear 1;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes move-cursor-four {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100vw);
+    }
+  }
+
+  .animate-cursor-4 {
+    animation: move-cursor-four 1s linear 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes animate-subtitle-resize {
+    0 {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-100vw);
+    }
+  }
+
+  .animate-subtitle-resize {
+    animation: animate-subtitle-resize 1s linear 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
   }
 
 }
