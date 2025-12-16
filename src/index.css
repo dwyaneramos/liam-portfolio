@@ -13,11 +13,28 @@
   
   .animate-resize {
     animation: resize 1s linear 1;
+    animation-delay: 2.5s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes move-cursor-one {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-60vw);
+    }
+  }
+
+  .animate-cursor-1 {
+    animation: move-cursor-one 1s linear 1;
     animation-delay: 1s;
     animation-fill-mode: forwards;
   }
 
-  @keyframes move-cursor {
+
+  @keyframes move-cursor-two {
     0% {
       transform: translateX(0);
     }
@@ -27,9 +44,8 @@
     }
   }
 
-  .animate-cursor-1 {
-    animation: move-cursor 1s linear 1;
-    animation-delay: 1s;
+  .animate-cursor-2 {
+    animation: move-cursor-two 1s linear 1;
     animation-fill-mode: forwards;
   }
 
