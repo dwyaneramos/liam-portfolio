@@ -2,12 +2,50 @@ import {useState, useEffect} from "react";
 import { PiCursorClick, PiCursor } from "react-icons/pi";
 import { FaRegHandPointer } from "react-icons/fa6";
 
+
+
+export const ClipRow = () => {
+  const clips = Array.from({length: 5})
+  const colors = ["red", "blue", "green", "yellow"]
+
+
+  const [clipColors] = useState(
+    clips.map(() => colors[Math.floor(Math.random() * colors.length)])
+  );
+  return (
+    <div className = "translate-clips-start translate-x-[100%]">
+      <div className = "pt-60 pb-10  w-max  animate-move-clip">
+        <div className = " flex gap-4 ">
+          {clipColors.map((clip, index) => {
+            const color = clipColors[index]
+            return (
+              <div key = {index} className = "rounded-xl min-w-lg py-10 relative"
+                                style = {{backgroundColor : color}}>
+              </div>
+            )
+          })}
+
+          {clipColors.map((clip, index) => {
+            const color = clipColors[index]
+            return (
+              <div key = {index} className = "rounded-xl min-w-lg py-10 relative"
+                                style = {{backgroundColor : color}}>
+              </div>
+            )
+          })}
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export const Home = () => {
   const [stageNum, setAnimationStage] = useState(1);
 
   useEffect(() => {
     const t1 = setTimeout(() => setAnimationStage(1), 1000);
-    const t2 = setTimeout(() => setAnimationStage(2), 2000);
+    const t2 = setTimeout(() => setAnimationStage(2), 1500);
     const t3 = setTimeout(() => setAnimationStage(3), 3000);
     const t4 = setTimeout(() => setAnimationStage(4), 4000);
     const t5 = setTimeout(() => setAnimationStage(5), 5000);
@@ -36,7 +74,8 @@ export const Home = () => {
 
   return (
     <section className = "h-screen">
-      <div className = "relative flex flex-col items-align h-screen items-center justify-center gap-4 ">
+      <ClipRow/>
+      <div className = "relative flex flex-col items-align items-center justify-center gap-4 ">
 
         <div className = "flex flex-row items-end ml-35">
           <div className = "flex flex-row justify-start w-2xl ">
@@ -52,6 +91,7 @@ export const Home = () => {
         </div>
           <h2 className = {`z-0 translate-x-[100vw] bg-[#a655bd] py-4 px-5 text-6xl rounded-xl text-white font-mono font-bold  ${SubtitleAnimation}`}>Film Freelancer</h2>
       </div> 
+
 
     </section>
   )

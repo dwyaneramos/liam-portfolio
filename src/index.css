@@ -1,6 +1,30 @@
 @import "tailwindcss";
 
 @layer utilities {
+  @keyframes move-clip {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(var(--shift-x));
+    }
+  }
+  .animate-move-clip {
+    --shift-x: -50%;
+    animation: move-clip 10s linear infinite;
+    animation-delay: 15s;
+  }
+
+  .translate-clips-start {
+    --shift-x: -100%;
+    animation: move-clip 10s linear 1;
+    animation-fill-mode: forwards;
+    animation-delay: 5s;
+  }
+
+  
+
+
   @keyframes resize {
     0% {
       width: 0;
