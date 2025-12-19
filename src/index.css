@@ -1,6 +1,40 @@
 @import "tailwindcss";
 
 @layer utilities {
+  @keyframes move-toolbar {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(100vh - 90%));
+    }
+  }
+
+  .animate-move-toolbar {
+    animation: move-toolbar 0.5s linear 1;
+    animation-delay:1s;
+    animation-fill-mode: forwards;
+  }
+
+
+  @keyframes display-editor {
+    from {
+      min-height: 0; 
+      max-height: 0;
+    }
+    to {
+      min-height: 100vh;
+      max-height:100vh;
+    }
+  }
+  
+  .animate-display-editor {
+    animation: display-editor 0.5s linear 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+  }
+
+
   @keyframes move-clip {
     from {
       transform: translateX(0);
@@ -90,20 +124,35 @@
 
   @keyframes move-cursor-four {
     0% {
-      transform: translateX(0);
+      transform: translateY(0);
     }
 
     100% {
-      transform: translateX(-100vw);
+      transform: translateY(-30vh);
     }
   }
 
   .animate-cursor-4 {
-    animation: move-cursor-four 1s linear 1;
-    animation-delay: 1s;
+    animation: move-cursor-four 0.5s linear 1;
+    animation-delay: 0s;
     animation-fill-mode: forwards;
   }
 
+@keyframes move-cursor-five {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(90vh);
+    }
+  }
+
+  .animate-cursor-5 {
+    animation: move-cursor-five 0.5s linear 1;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+  }
   @keyframes animate-subtitle-resize {
     0 {
       transform: translateX(0);
@@ -126,5 +175,5 @@
 
 body, html {
   margin: 0; 
-  background: #2f3e46;
+  background: #243036;
 }
