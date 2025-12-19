@@ -53,7 +53,7 @@ export const Home = () => {
     const t4 = setTimeout(() => setAnimationStage(4), 4000);
     const t5 = setTimeout(() => {
       setAnimationStage(5);
-      {/*setShowEditor(true);*/}
+      setShowEditor(true);
     }, 5000);
     const t6 = setTimeout(() => setAnimationStage(6), 6000);
 
@@ -80,6 +80,28 @@ export const Home = () => {
   )
 }
 
+const Homepage = () => {
+  return (
+    <div className = "h-auto w-full bg-blue-600">
+      Homepagesfds
+    </div>
+  )
+}
+const About = () => {
+  return (
+    <div className = "h-auto w-full bg-blue-600">
+      Saboutnsdfsdf
+    </div>
+  )
+}
+const Projects = () => {
+  return (
+    <div className = "h-auto w-full bg-blue-600">
+      Projecsts
+    </div>
+  )
+}
+
 const Editor = ({showEditor}) => {
   useEffect(() => {
     if (showEditor) {
@@ -87,10 +109,20 @@ const Editor = ({showEditor}) => {
     }
   }, [showEditor])
 
+  const [page, setPage] = useState("Home")
+  const lookup = {"Home" : Homepage, "About" : About, "Projects" : Projects}
+  const PageToDisplay = lookup[page]
+
+
   return (
     <div className = {`overflow-hidden max-h-0 bg-red-400 ${showEditor ? "animate-display-editor" : ""}`}>
       <EditorHeader/>
-      <FilesNavBar/>
+      <div className = "flex flex-row">
+         
+        <FilesNavBar setPage = {setPage}/>
+        <PageToDisplay/>
+
+      </div> 
     </div>
   )
 }
@@ -103,23 +135,23 @@ const EditorHeader = () => {
   )
 }
 
-const FilesNavBar = () => {
+const FilesNavBar = ({setPage}) => {
   return (
     <div className="bg-[#3b4347] w-xs">
       
       <h1 className ="pl-10 pt-10 font-mono text-white text-4xl">Media</h1>  
       <div className = "p-10 flex flex-wrap gap-3 flex-col  min-h-screen">
-        <File header = "Home"/>  
-        <File header = "About"/>  
-        <File header = "Projects"/>  
+        <File header = "Home" onClick={() => setPage("Home")}/>  
+        <File header = "About" onClick={() => setPage("About")}/>  
+        <File header = "Projects" onClick={() => setPage("Projects")}/>  
       </div>
     </div>
   )
 }
 
-const File = ({header}) => {
+const File = ({header, onClick}) => {
   return (
-    <div className = "hover:-translate-y-1 transition h-30 w-50 bg-blue-400 flex items-end  ">
+    <div className = "hover:-translate-y-1 transition h-30 w-50 bg-blue-400 flex items-end" onClick = {onClick}>
       <h1 className = "mx-auto">{header}.mp4</h1>
     </div>
   )
