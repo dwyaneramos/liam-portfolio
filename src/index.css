@@ -108,7 +108,7 @@
 
   @keyframes move-cursor-three {
     0% {
-      transform: translateX(0);
+      transform: translateX(20rem);
     }
 
     100% {
@@ -118,7 +118,7 @@
 
   .animate-cursor-3 {
     animation: move-cursor-three 1s linear 1;
-    animation-delay: 0.5s;
+    animation-delay: 0;
     animation-fill-mode: forwards;
   }
 
@@ -128,7 +128,7 @@
     }
 
     100% {
-      transform: translateY(-30vh);
+      transform: translateY(-40vh);
     }
   }
 
@@ -140,7 +140,7 @@
 
 @keyframes move-cursor-five {
     0% {
-      transform: translateY(0);
+      transform: translateY(-40vh);
     }
 
     100% {

@@ -53,7 +53,7 @@ export const Home = () => {
     const t4 = setTimeout(() => setAnimationStage(4), 4000);
     const t5 = setTimeout(() => {
       setAnimationStage(5);
-      setShowEditor(true);
+      {/*setShowEditor(true);*/}
     }, 5000);
     const t6 = setTimeout(() => setAnimationStage(6), 6000);
 
@@ -70,7 +70,7 @@ export const Home = () => {
   }, [])
 
   return (
-    <div className="max-h-screen min-h-full overflow-y-hidden">
+    <div className="relative max-h-screen min-h-full overflow-y-hidden">
       <Editor showEditor = {showEditor} stageNum = {stageNum}/>
       <Cursor stageNum = {stageNum}/>
       <Toolbar showEditor = {showEditor}/>
@@ -145,22 +145,24 @@ const Toolbar = ({showEditor}) => {
 const Cursor = ({stageNum}) => {
 
   const animationStages = {
-    1 : {icon : PiCursor        , iconClasses : " -translate-x-100 translate-y-10 animate-cursor-1"},
-    2 : {icon : FaRegHandPointer, iconClasses : " -translate-x-105 translate-y-10 animate-cursor-2"},
-    3 : {icon : PiCursor        , iconClasses : "-translate-x-20 translate-y-10 animate-cursor-3" },
-    4 : {icon : FaRegHandPointer, iconClasses : "-translate-x-30 translate-y-40 animate-cursor-1"}  ,
-    5 : {icon : PiCursor,         iconClasses : "-translate-x-30 translate-y-40 animate-cursor-4"}, 
-    6 : {icon : PiCursor,         iconClasses : "-translate-x-30 translate-y-40 animate-cursor-5"}  
+    1 : {icon : PiCursor        , iconClasses : " animate-cursor-1"},
+    2 : {icon : FaRegHandPointer, iconClasses : " animate-cursor-2"},
+    3 : {icon : PiCursor        , iconClasses : " animate-cursor-3" },
+    4 : {icon : FaRegHandPointer, iconClasses : "top-[35%] translate-x-70 animate-cursor-1"}  ,
+    5 : {icon : PiCursor,         iconClasses : "top-[35%] translate-x-70 animate-cursor-4"}, 
+    6 : {icon : PiCursor,         iconClasses : "top-[35%] translate-x-70 animate-cursor-5"}  
   }
 
   const CurrentIcon = animationStages[stageNum].icon
   const CurrentClasses = animationStages[stageNum].iconClasses
   
   return (
-    <div className = {`z-10 absolute right-105 top-1/8 ${CurrentClasses}`}>
+    <div className = {`absolute right-[45%] top-[15%] z-10 ${CurrentClasses}`}>
       <CurrentIcon size = {90} color = {"white"}/>
     </div>
-  )
+
+
+      )
 
 }
 
@@ -185,7 +187,7 @@ const Timeline = ({setShowEditor, stageNum}) => {
 
           
           {/*Name Clip*/}
-          <div className = "pl-40 py-5 min-h-40 flex flex-row items-center justify-center">
+          <div className = "pl-20 py-5 min-h-40 flex flex-row items-center justify-center">
             <div className = "flex flex-col">
               <div className = "flex flex-row">
                 <h2 className = {`text-3xl pl-2 pt-2 font-mono text-white  bg-[#4fab55] rounded-t-xl w-xs`}>
