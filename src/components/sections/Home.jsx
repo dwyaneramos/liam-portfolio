@@ -2,90 +2,20 @@ import {useState, useEffect} from "react";
 import { PiCursorClick, PiCursor } from "react-icons/pi";
 import { FaRegHandPointer } from "react-icons/fa6";
 import { RiArrowGoBackFill, RiArrowGoForwardFill } from "react-icons/ri";
-import { FaPlay, FaStop } from "react-icons/fa";
-
-export const ClipRow = ({fromRight}) => {
-  const clips = Array.from({length: 5})
-  const colors = ["red", "blue", "green", "yellow"]
+import { IoMailOutline } from "react-icons/io5";
+import { FaPlay, FaStop, FaLinkedin  } from "react-icons/fa";
+import { BsFillTelephoneFill } from "react-icons/bs";
 
 
-  const [clipColors] = useState(
-    clips.map(() => colors[Math.floor(Math.random() * colors.length)])
-  );
 
-  return (
-    <div className = {`translate-clips-start `}>
-      <div className = "pt-60 pb-10  w-max  animate-move-clip">
-        <div className = " flex gap-4 ">
-          {clipColors.map((clip, index) => {
-            const color = clipColors[index]
-            return (
-              <div key = {index} className = "rounded-xl min-w-lg py-10 relative"
-                                style = {{backgroundColor : color}}>
-              </div>
-            )
-          })}
-
-          {clipColors.map((clip, index) => {
-            const color = clipColors[index]
-            return (
-              <div key = {index} className = "rounded-xl min-w-lg py-10 relative"
-                                style = {{backgroundColor : color}}>
-              </div>
-            )
-          })}
-
-        </div>
-      </div>
-    </div>
-  )
-}
-
-
-export const Home = () => {
-  const [showEditor, setShowEditor] = useState(false);
-  const [stageNum, setAnimationStage] = useState(1);
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setAnimationStage(1), 1000);
-    const t2 = setTimeout(() => setAnimationStage(2), 1500);
-    const t3 = setTimeout(() => setAnimationStage(3), 3000);
-    const t4 = setTimeout(() => setAnimationStage(4), 4000);
-    const t5 = setTimeout(() => {
-      setAnimationStage(5);
-      setShowEditor(true);
-    }, 5000);
-    const t6 = setTimeout(() => setAnimationStage(6), 6000);
-
-
-  return () => {
-      clearTimeout(t1)
-      clearTimeout(t2)
-      clearTimeout(t3)
-      clearTimeout(t4)
-      clearTimeout(t5)
-      clearTimeout(t6)
-
-    }
-  }, [])
-
-  return (
-    <div className="relative max-h-screen min-h-full overflow-y-hidden">
-      <Editor showEditor = {showEditor} stageNum = {stageNum}/>
-      <Cursor stageNum = {stageNum}/>
-      <Toolbar showEditor = {showEditor}/>
-      <Timeline setShowEditor = {setShowEditor} stageNum = {stageNum}/>
-      
-    </div>
-  )
-}
 
 const Homepage = () => {
   return (
-    <div className = "flex flex-col  text-center pt-10  w-full bg-blue-600">
+    <div className = "flex flex-col  text-center pt-10  w-full bg-blue-400">
       <h1 className = "font-mono text-white text-4xl">
         Kia Ora! I'm Liam
       </h1>
+      <h2 className = "font-mono text-white text-3xl">An Editing and Post-Production Specialist</h2>
 
       <h2 className = "font-mono text-white text-3xl" >
         Welcome to my Film Portfolio
@@ -95,14 +25,24 @@ const Homepage = () => {
 }
 const About = () => {
   return (
-    <div className = "h-auto w-full bg-blue-600">
-      Saboutnsdfsdf
+    <div className = "h-auto w-full bg-blue-400 flex flex-col text-center items-center">
+      <h1 className = "text-white font-mono text-4xl">About me</h1>
+      <h2 className = "text-white font-mono text-4xl">Education</h2>
+        <div>
+          <h1 className = "text-white font-mono text-3xl">Whitireia & WeiTec</h1>
+          <h2 className = "text-white font-mono text-2xl">Diploma in Screen Production</h2>
+          <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
+        </div>
+        <div>
+          <h1 className = "text-white font-mono text-3xl">High School</h1>
+          <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
+        </div>
     </div>
   )
 }
 const Projects = () => {
   return (
-    <div className = "flex flex-col items-center text-center pt-10 px-5 w-full bg-blue-600">
+    <div className = "flex flex-col items-center text-center pt-10 px-5 w-full bg-blue-400">
       <h1 className = "font-mono text-white text-4xl">
         Projects
       </h1>
@@ -112,9 +52,9 @@ const Projects = () => {
       </h2>
 
       <div className = "flex flex-col md:flex-row gap-5 justify-center flex-wrap">
-        <Project/>
-        <Project/>
-        <Project/>
+        <Project header = "Price of Heaven" desc = "Film Project" role = "Lead Editor & Sound Designer"/>
+        <Project header = "Wellington Speedcubing" desc = "Documentary" role = "Director & Lead Editor"/>
+        <Project header = "DARTZ - Bathsalts" desc = "Music Video" role = "Director & Lead Editor"/>
       </div>
 
 
@@ -122,11 +62,12 @@ const Projects = () => {
   )
 }
 
-const Project = () => {
+const Project = ({header, desc, role}) => {
   return (
-    <div className ="w-100 py-20 bg-red-600 flex flex-start flex-col rounded-xl hover:-translate-y-1 transition">
-      <h1 className ="font-mono text-white text-4xl">Random Film Project</h1>
-      <h2 className = "font-mono text-white text-3xl">A story about something</h2>
+    <div className ="w-md py-20 bg-red-600 flex flex-start flex-col rounded-xl hover:-translate-y-1 transition">
+      <h1 className ="font-mono text-white text-3xl">{header}</h1>
+      <h2 className = "font-mono text-white text-2xl">{desc}</h2>
+      <h2 className = "font-mono text-white text-xl">{role}</h2>
       <iframe
         className ="w-[90%] m-auto h-full"
         src='https://www.youtube.com/embed/E7wJTI-1dvQ'
@@ -142,7 +83,7 @@ const Project = () => {
 
 
 
-const Editor = ({showEditor}) => {
+export const Editor = ({showEditor}) => {
   useEffect(() => {
     if (showEditor) {
       console.log("YSAY");
@@ -155,7 +96,7 @@ const Editor = ({showEditor}) => {
 
 
   return (
-    <div className = {`overflow-hidden max-h-0 bg-red-400 ${showEditor ? "animate-display-editor" : ""}`}>
+    <div className = {`overflow-hidden max-h-0 bg-[#4c575c] ${showEditor ? "animate-display-editor" : ""}`}>
       <EditorHeader/>
       <div className = "flex flex-row">
          
@@ -197,24 +138,50 @@ const File = ({header, onClick}) => {
   )
 }
 
-const Toolbar = ({showEditor}) => {
+export const Toolbar = ({showEditor}) => {
 
   const EditIconSize = 55;
+  const [changeIcon, setChangeIcon] = useState(false);
+  useEffect(() => {
+    if (showEditor) {
+      const timer = setTimeout(() => {
+        setChangeIcon(true);
+      }, 1500);
+
+
+
+    } else {
+      setChangeIcon(false);
+      return;
+    }
+
+    return () => clearTimeout(timer)
+
+    }, [showEditor])
+
+  const Icon1 = changeIcon == true ? FaLinkedin : RiArrowGoBackFill;
+  const Icon2 = changeIcon == true ? IoMailOutline : RiArrowGoForwardFill;
+  const Icon3 = changeIcon == true ? BsFillTelephoneFill : FaPlay;
+  const Icon4 = changeIcon == true ? FaPlay : FaStop;
+
+  
+
   return (
     <div className = {`absolute top-0 bg-[#4f5b61] min-h-20 max-h-20 py-3 min-w-screen flex
           flex-row gap-10 items-align items-center z-0
           ${showEditor ? "animate-move-toolbar" : ""}`}>
-      <RiArrowGoBackFill size = {EditIconSize} color = {"white"} className="ml-10"/>
-      <RiArrowGoForwardFill size = {EditIconSize} color = {"white"}/>
-      <FaPlay size = {EditIconSize} color = {"white"}/>
-      <FaStop size = {EditIconSize} color = {"white"}/>
+
+      <Icon1 size = {EditIconSize} color = {"white"} className="ml-10"/>
+      <Icon2 size = {EditIconSize} color = {"white"}/>
+      <Icon3 size = {EditIconSize} color = {"white"}/>
+      <Icon4 size = {EditIconSize} color = {"white"}/>
       
     </div>
   )
 }
 
 
-const Cursor = ({stageNum}) => {
+export const Cursor = ({stageNum}) => {
 
   const animationStages = {
     1 : {icon : PiCursor        , iconClasses : " animate-cursor-1"},
@@ -238,7 +205,7 @@ const Cursor = ({stageNum}) => {
 
 }
 
-const Timeline = ({setShowEditor, stageNum}) => {
+export const Timeline = ({setShowEditor, stageNum}) => {
   
   const animationStages = {
     1 : {icon : PiCursor        , iconClasses : " -translate-x-100 translate-y-10 animate-cursor-1", titleAnimation : "", subtitleAnimation : "" },
