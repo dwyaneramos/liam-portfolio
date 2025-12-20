@@ -82,8 +82,14 @@ export const Home = () => {
 
 const Homepage = () => {
   return (
-    <div className = "h-auto w-full bg-blue-600">
-      Homepagesfds
+    <div className = "flex flex-col  text-center pt-10  w-full bg-blue-600">
+      <h1 className = "font-mono text-white text-4xl">
+        Kia Ora! I'm Liam
+      </h1>
+
+      <h2 className = "font-mono text-white text-3xl" >
+        Welcome to my Film Portfolio
+      </h2>
     </div>
   )
 }
@@ -96,11 +102,45 @@ const About = () => {
 }
 const Projects = () => {
   return (
-    <div className = "h-auto w-full bg-blue-600">
-      Projecsts
+    <div className = "flex flex-col items-center text-center pt-10 px-5 w-full bg-blue-600">
+      <h1 className = "font-mono text-white text-4xl">
+        Projects
+      </h1>
+
+      <h2 className = "font-mono text-white text-3xl" >
+        lorem
+      </h2>
+
+      <div className = "flex flex-col md:flex-row gap-5 justify-center flex-wrap">
+        <Project/>
+        <Project/>
+        <Project/>
+      </div>
+
+
     </div>
   )
 }
+
+const Project = () => {
+  return (
+    <div className ="w-100 py-20 bg-red-600 flex flex-start flex-col rounded-xl hover:-translate-y-1 transition">
+      <h1 className ="font-mono text-white text-4xl">Random Film Project</h1>
+      <h2 className = "font-mono text-white text-3xl">A story about something</h2>
+      <iframe
+        className ="w-[90%] m-auto h-full"
+        src='https://www.youtube.com/embed/E7wJTI-1dvQ'
+        frameborder='0'
+        allow='autoplay; encrypted-media'
+        allowfullscreen
+        title='video'
+      />
+
+    </div>
+  )
+}
+
+
 
 const Editor = ({showEditor}) => {
   useEffect(() => {
@@ -137,7 +177,7 @@ const EditorHeader = () => {
 
 const FilesNavBar = ({setPage}) => {
   return (
-    <div className="bg-[#3b4347] w-xs">
+    <div className="bg-[#3b4347] w-2xs">
       
       <h1 className ="pl-10 pt-10 font-mono text-white text-4xl">Media</h1>  
       <div className = "p-10 flex flex-wrap gap-3 flex-col  min-h-screen">
