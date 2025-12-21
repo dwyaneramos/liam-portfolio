@@ -6,19 +6,21 @@ import { IoMailOutline, IoPerson} from "react-icons/io5";
 import { FaPlay, FaStop, FaLinkedin, FaFileAlt, FaEye, FaPencilAlt, FaHome, FaFilm  } from "react-icons/fa";
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 import { BsFillTelephoneFill } from "react-icons/bs";
+import {Projects} from "./Projects"
 
 
 
 
-const Homepage = () => {
+const Homepage = ({setPage}) => {
   return (
     <div className = "flex flex-col items-center text-center pt-10 justify-center pb-70  w-full bg-[#2b3033]">
-      <h1 className = "font-mono text-white text-4xl">
+      <h1 className = "font-mono text-white text-5xl border-b-3 border-white mb-3">
         Liam Wadek  
       </h1>
-      <h2 className = "font-mono text-white text-3xl">Editing and Post-Production Specialist</h2>
+      <h2 className = "font-mono text-white text-4xl">Editing and Post-Production Specialist</h2>
 
-      <h2 className = "mt-5 font-mono bg-blue-300 py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer" >
+      <h2 className = "mt-5 font-mono bg-blue-300 py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer"
+          onClick = {() => setPage("Projects")}>
         View Projects <span className ="text-3xl p-0">&#8594;</span>
       </h2>
     </div>
@@ -41,46 +43,7 @@ const About = () => {
     </div>
   )
 }
-const Projects = () => {
-  return (
-    <div className = "flex flex-col items-center text-center pt-10 px-5 w-full bg-blue-400">
-      <h1 className = "font-mono text-white text-4xl">
-        Projects
-      </h1>
 
-      <h2 className = "font-mono text-white text-3xl" >
-        lorem
-      </h2>
-
-      <div className = "flex flex-col md:flex-row gap-5 justify-center flex-wrap">
-        <Project header = "Price of Heaven" desc = "Film Project" role = "Lead Editor & Sound Designer"/>
-        <Project header = "Wellington Speedcubing" desc = "Documentary" role = "Director & Lead Editor"/>
-        <Project header = "DARTZ - Bathsalts" desc = "Music Video" role = "Director & Lead Editor"/>
-      </div>
-
-
-    </div>
-  )
-}
-
-const Project = ({header, desc, role}) => {
-  return (
-    <div className ="w-md py-20 bg-red-600 flex flex-start flex-col rounded-xl hover:-translate-y-1 transition">
-      <h1 className ="font-mono text-white text-3xl">{header}</h1>
-      <h2 className = "font-mono text-white text-2xl">{desc}</h2>
-      <h2 className = "font-mono text-white text-xl">{role}</h2>
-      <iframe
-        className ="w-[90%] m-auto h-full"
-        src='https://www.youtube.com/embed/E7wJTI-1dvQ'
-        frameborder='0'
-        allow='autoplay; encrypted-media'
-        allowfullscreen
-        title='video'
-      />
-
-    </div>
-  )
-}
 
 
 
@@ -98,11 +61,11 @@ export const Editor = ({showEditor}) => {
 
   return (
     <div className = {`overflow-hidden max-h-0 bg-[#4c575c] ${showEditor ? "animate-display-editor" : ""}`}>
-      <EditorHeader setPage = {setPage}/>
+      <EditorHeader setPage = {setPage} page = {page}/>
       <div className = "flex flex-row h-screen">
         
 
-        <PageToDisplay/>
+        <PageToDisplay setPage = {setPage}/>
 
       </div> 
     </div>
@@ -110,22 +73,23 @@ export const Editor = ({showEditor}) => {
 }
 
 
-const NavBar = ({setPage}) => {
+const NavBar = ({setPage, page}) => {
   return (
-    <div className = "flex flex-row pl-10 py-1 gap-5 text-white font-mono text-2xl items-center">
-      <Option Icon = {FaHome} name ="Home" isBig = {true} onClick={() => setPage("Home")}/>
-      <Option Icon = {IoPerson} name ="Person" isBig = {true} onClick={() => setPage("About")}/>
-      <Option Icon = {FaFilm} name ="Projects" isBig = {true} onClick={() => setPage("Projects")}/>
+    <div className = "flex flex-row pl-10 py-2 gap-5 text-white font-mono text-2xl items-center">
+      <Option Icon = {FaHome} name ="Home" isBig = {true} onClick={() => setPage("Home")} current = {page == "Home" ? true : false}/>
+      <Option Icon = {IoPerson} name ="About Me" isBig = {true} onClick={() => setPage("About")} current = {page == "About" ? true : false}/>
+      <Option Icon = {FaFilm} name ="Projects" isBig = {true} onClick={() => setPage("Projects")} current = {page == "Projects" ? true : false}/>
     </div>
   )
 }
 
-const Option = ({Icon, name, isBig, onClick}) => {
+const Option = ({Icon, name, isBig, onClick, current}) => {
   const iconSize = isBig ? 29 : 23
   const textSize = isBig ? "text-2xl" : "text-xl" 
+  const bg = current ? "bg-blue-500" : ""
 
   return (
-    <div className = "flex flex-row gap-2 hover:bg-gray-700 transition cursor-pointer p-2 rounded-lg" onClick = {onClick}>
+    <div className = {`flex flex-row gap-2 hover:bg-gray-700 transition cursor-pointer p-2 rounded-lg ${bg}`} onClick = {onClick}>
       <Icon size={iconSize} color={"white"}/>
       <h1 className = {`${textSize} text-white`}>{name}</h1>
     </div>
@@ -143,7 +107,7 @@ const OptionsBar = () => {
   )
 }
 
-const EditorHeader = ({setPage}) => {
+const EditorHeader = ({setPage, page}) => {
   return (
     <div className = "flex flex-col">
       
@@ -154,7 +118,7 @@ const EditorHeader = ({setPage}) => {
         </div>
       </div>
 
-      <NavBar setPage = {setPage}/>  
+      <NavBar setPage = {setPage} page = {page}/>  
     </div>
 
   )
