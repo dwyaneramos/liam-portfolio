@@ -2,8 +2,9 @@ import {useState, useEffect} from "react";
 import { PiCursorClick, PiCursor } from "react-icons/pi";
 import { FaRegHandPointer } from "react-icons/fa6";
 import { RiArrowGoBackFill, RiArrowGoForwardFill } from "react-icons/ri";
-import { IoMailOutline } from "react-icons/io5";
-import { FaPlay, FaStop, FaLinkedin  } from "react-icons/fa";
+import { IoMailOutline, IoPerson} from "react-icons/io5";
+import { FaPlay, FaStop, FaLinkedin, FaFileAlt, FaEye, FaPencilAlt, FaHome, FaFilm  } from "react-icons/fa";
+import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 import { BsFillTelephoneFill } from "react-icons/bs";
 
 
@@ -11,14 +12,14 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 
 const Homepage = () => {
   return (
-    <div className = "flex flex-col  text-center pt-10  w-full bg-blue-400">
+    <div className = "flex flex-col items-center text-center pt-10 justify-center pb-70  w-full bg-[#2b3033]">
       <h1 className = "font-mono text-white text-4xl">
-        Kia Ora! I'm Liam
+        Liam Wadek  
       </h1>
-      <h2 className = "font-mono text-white text-3xl">An Editing and Post-Production Specialist</h2>
+      <h2 className = "font-mono text-white text-3xl">Editing and Post-Production Specialist</h2>
 
-      <h2 className = "font-mono text-white text-3xl" >
-        Welcome to my Film Portfolio
+      <h2 className = "mt-5 font-mono bg-blue-300 py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer" >
+        View Projects <span className ="text-3xl p-0">&#8594;</span>
       </h2>
     </div>
   )
@@ -97,10 +98,10 @@ export const Editor = ({showEditor}) => {
 
   return (
     <div className = {`overflow-hidden max-h-0 bg-[#4c575c] ${showEditor ? "animate-display-editor" : ""}`}>
-      <EditorHeader/>
-      <div className = "flex flex-row">
-         
-        <FilesNavBar setPage = {setPage}/>
+      <EditorHeader setPage = {setPage}/>
+      <div className = "flex flex-row h-screen">
+        
+
         <PageToDisplay/>
 
       </div> 
@@ -108,11 +109,54 @@ export const Editor = ({showEditor}) => {
   )
 }
 
-const EditorHeader = () => {
+
+const NavBar = ({setPage}) => {
   return (
-    <div className = "bg-[#3b4347] w-screen py-3">
-      <h1 className = "font-mono text-white text-2xl text-center">Editing portfolio.mp4</h1>
+    <div className = "flex flex-row pl-10 py-1 gap-5 text-white font-mono text-2xl items-center">
+      <Option Icon = {FaHome} name ="Home" isBig = {true} onClick={() => setPage("Home")}/>
+      <Option Icon = {IoPerson} name ="Person" isBig = {true} onClick={() => setPage("About")}/>
+      <Option Icon = {FaFilm} name ="Projects" isBig = {true} onClick={() => setPage("Projects")}/>
     </div>
+  )
+}
+
+const Option = ({Icon, name, isBig, onClick}) => {
+  const iconSize = isBig ? 29 : 23
+  const textSize = isBig ? "text-2xl" : "text-xl" 
+
+  return (
+    <div className = "flex flex-row gap-2 hover:bg-gray-700 transition cursor-pointer p-2 rounded-lg" onClick = {onClick}>
+      <Icon size={iconSize} color={"white"}/>
+      <h1 className = {`${textSize} text-white`}>{name}</h1>
+    </div>
+  )
+}
+
+const OptionsBar = () => {
+  return (
+  <div className = "flex flex-row pl-10 pt-3 gap-4">
+    <Option Icon = {FaFileAlt} name = {"File"} isBig = {false}/>
+    <Option Icon = {FaEye} name = {"View"} isBig = {false}/>
+    <Option Icon = {FaPencilAlt} name = {"Edit"} isBig = {false}/>
+    <Option Icon = {HiOutlineQuestionMarkCircle} name = {"Help"} isBig = {false}/>
+  </div>
+  )
+}
+
+const EditorHeader = ({setPage}) => {
+  return (
+    <div className = "flex flex-col">
+      
+      <div className = "flex flex-row bg-grey-700 border-b-1 border-gray-500">
+        <OptionsBar/>
+        <div className = " w-full  py-3">
+          <h1 className = "font-mono text-white text-2xl text-center  pr-40">Editing portfolio.mp4</h1>
+        </div>
+      </div>
+
+      <NavBar setPage = {setPage}/>  
+    </div>
+
   )
 }
 
