@@ -7,6 +7,7 @@ import { FaPlay, FaStop, FaLinkedin, FaFileAlt, FaEye, FaPencilAlt, FaHome, FaFi
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import {Projects} from "./Projects"
+import { GrContact } from "react-icons/gr";
 
 
 
@@ -26,25 +27,43 @@ const Homepage = ({setPage}) => {
     </div>
   )
 }
+const Contact = ({setPage}) => {
+  return (
+    <div className = "flex flex-col items-center text-center pt-10 justify-center pb-70  w-full bg-[#2b3033]">
+      <h1 className = "font-mono text-white text-5xl border-b-3 border-white mb-3">
+        Keen To Collaborate?
+      </h1>
+      <h2 className = "font-mono text-white text-4xl">Editing and Post-Production Specialist</h2>
+
+      <h2 className = "mt-5 font-mono bg-blue-300 py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer"
+          onClick = {() => setPage("Projects")}>
+        View Projects <span className ="text-3xl p-0">&#8594;</span>
+      </h2>
+    </div>
+  )
+}
+
+
 const About = () => {
-  const skills = ["Premiere Pro", "Photoshop", "AfterFX"]
+  const skills = ["Premiere Pro", "Photoshop", "AVID", "After Effects"]
   return (
     <div className = "h-auto w-full bg-[#2b3033] flex flex-col text-center items-center py-10 gap-5">
       
       <p className = "text-white text-2xl w-[50%]">
         Kia Ora! I'm a recent film graduate based in Wellington and specialise in post-production editing.
-        I'm really passionate about X and am looking to do Y.
+        I'm passionate about bringing footage to life and creating a story through the means of editing.
+
       </p>
       <>
         <h2 className = "text-white font-mono text-4xl border-b-2 border-white">Education</h2>
           <div>
             <h1 className = "text-white font-mono text-3xl">Whitireia & WeiTec</h1>
             <h2 className = "text-white font-mono text-2xl">Diploma in Screen Production</h2>
-            <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
+            <h2 className = "text-white font-mono text-2xl">2025</h2>
           </div>
           <div>
-            <h1 className = "text-white font-mono text-3xl">High School</h1>
-            <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
+            <h1 className = "text-white font-mono text-3xl">Waiuku College</h1>
+            <h2 className = "text-white font-mono text-2xl">2017 - 2021</h2>
           </div>
       </>
 
@@ -55,7 +74,7 @@ const About = () => {
 
             skills.map((skill, index) => {
               return (
-                <div key = {index} className = "text-white font-mono bg-blue-400 text-xl p-2 rounded-xl border-2 border-blue-700 hover:-translate-y-1 transition">
+                <div key = {index} className = "text-white font-mono bg-blue-500 text-xl p-2 rounded-xl border-2 border-blue-700 hover:-translate-y-1 transition">
                   {skill}
                 </div>
               )
@@ -78,7 +97,7 @@ export const Editor = ({showEditor}) => {
   }, [showEditor])
 
   const [page, setPage] = useState("Home")
-  const lookup = {"Home" : Homepage, "About" : About, "Projects" : Projects}
+  const lookup = {"Home" : Homepage, "About" : About, "Projects" : Projects, "Contact" : Contact}
   const PageToDisplay = lookup[page]
 
 
@@ -102,6 +121,7 @@ const NavBar = ({setPage, page}) => {
       <Option Icon = {FaHome} name ="Home" isBig = {true} onClick={() => setPage("Home")} current = {page == "Home" ? true : false}/>
       <Option Icon = {IoPerson} name ="About Me" isBig = {true} onClick={() => setPage("About")} current = {page == "About" ? true : false}/>
       <Option Icon = {FaFilm} name ="Projects" isBig = {true} onClick={() => setPage("Projects")} current = {page == "Projects" ? true : false}/>
+      <Option Icon = {GrContact} name ="Contact" isBig = {true} onClick={() => setPage("Contact")} current = {page == "Contact" ? true : false}/>
     </div>
   )
 }
@@ -260,15 +280,13 @@ export const Timeline = ({setShowEditor, stageNum}) => {
           <div className = "pl-20 py-5 min-h-40 flex flex-row items-center justify-center">
             <div className = "flex flex-col">
               <div className = "flex flex-row">
-                <h2 className = {`text-3xl pl-2 pt-2 font-mono text-white  bg-[#4fab55] rounded-t-xl w-xs`}>
-                  My Name:
-                </h2>
+        
                 <div className = {`bg-[#4fab55] rounded-tr-xl w-0 -ml-3 ${TitleAnimation}`}>
                 </div>
               </div>
               <div className = {`flex flex-row justify-start min-w-2xl `}>
-                <h1 className = "bg-[#55bd5c] py-4 px-10 rounded-b-xl text-8xl min-w-xs text-white font-mono font-bold">Liam</h1>
-                <h1 className = {` bg-[#55bd5c] py-4 -ml-3 w-0 rounded-br-xl text-8xl overflow-hidden text-white font-mono font-bold ${TitleAnimation}`}>Wadek</h1>
+                <h1 className = "bg-[#55bd5c] py-4 px-10 rounded-xl text-8xl min-w-xs text-white font-mono font-bold">Welcome</h1>
+                <h1 className = {` bg-[#55bd5c] py-4 -ml-5 max-h-md w-0 rounded-xl text-8xl  whitespace-nowrap overflow-hidden text-white font-mono font-bold ${TitleAnimation}`}>to my</h1>
               </div>
             </div>
           
@@ -280,8 +298,7 @@ export const Timeline = ({setShowEditor, stageNum}) => {
           {/*Title Clip*/}
           <div className = "pl-10 min-h-30 pb-5 flex flex-row items-center justify-center">
             <div className = "flex flex-col ">
-              <h2 className ={`bg-[#844496] rounded-t-xl font-mono text-white text-2xl pl-2 pt-2 translate-x-[100vw] ${SubtitleAnimation}`}>What I am:</h2>
-              <h2 className = {`z-0 translate-x-[100vw] bg-[#a655bd] py-4 px-5 text-6xl rounded-b-xl text-white font-mono font-bold ${SubtitleAnimation}`}>Film Freelancer</h2>
+              <h2 className = {`z-0 translate-x-[100vw] text-nowrap bg-[#a655bd] py-4 px-5 text-8xl rounded-xl text-white font-mono font-bold ${SubtitleAnimation}`}>Portfolio</h2>
             </div>
           </div>
 
