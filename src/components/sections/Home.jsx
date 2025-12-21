@@ -27,19 +27,42 @@ const Homepage = ({setPage}) => {
   )
 }
 const About = () => {
+  const skills = ["Premiere Pro", "Photoshop", "AfterFX"]
   return (
-    <div className = "h-auto w-full bg-blue-400 flex flex-col text-center items-center">
-      <h1 className = "text-white font-mono text-4xl">About me</h1>
-      <h2 className = "text-white font-mono text-4xl">Education</h2>
-        <div>
-          <h1 className = "text-white font-mono text-3xl">Whitireia & WeiTec</h1>
-          <h2 className = "text-white font-mono text-2xl">Diploma in Screen Production</h2>
-          <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
+    <div className = "h-auto w-full bg-[#2b3033] flex flex-col text-center items-center py-10 gap-5">
+      
+      <p className = "text-white text-2xl w-[50%]">
+        Kia Ora! I'm a recent film graduate based in Wellington and specialise in post-production editing.
+        I'm really passionate about X and am looking to do Y.
+      </p>
+      <>
+        <h2 className = "text-white font-mono text-4xl border-b-2 border-white">Education</h2>
+          <div>
+            <h1 className = "text-white font-mono text-3xl">Whitireia & WeiTec</h1>
+            <h2 className = "text-white font-mono text-2xl">Diploma in Screen Production</h2>
+            <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
+          </div>
+          <div>
+            <h1 className = "text-white font-mono text-3xl">High School</h1>
+            <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
+          </div>
+      </>
+
+      <div>
+        <h2 className = "text-white font-mono text-4xl border-b-2 border-white mb-5">Skills</h2>
+        <div className = "flex flex-row flex-wrap gap-3">
+          {
+
+            skills.map((skill, index) => {
+              return (
+                <div key = {index} className = "text-white font-mono bg-blue-400 text-xl p-2 rounded-xl border-2 border-blue-700 hover:-translate-y-1 transition">
+                  {skill}
+                </div>
+              )
+            })
+        }
         </div>
-        <div>
-          <h1 className = "text-white font-mono text-3xl">High School</h1>
-          <h2 className = "text-white font-mono text-2xl">Jan 2020 - Jan 2023</h2>
-        </div>
+      </div>
     </div>
   )
 }
@@ -114,7 +137,7 @@ const EditorHeader = ({setPage, page}) => {
       <div className = "flex flex-row bg-grey-700 border-b-1 border-gray-500">
         <OptionsBar/>
         <div className = " w-full  py-3">
-          <h1 className = "font-mono text-white text-2xl text-center  pr-40">Editing portfolio.mp4</h1>
+          <h1 className = "font-mono text-white text-2xl text-center  pr-90">Editing portfolio.mp4</h1>
         </div>
       </div>
 
@@ -148,7 +171,7 @@ const File = ({header, onClick}) => {
 
 export const Toolbar = ({showEditor}) => {
 
-  const EditIconSize = 55;
+  const EditIconSize = 45;
   const [changeIcon, setChangeIcon] = useState(false);
   useEffect(() => {
     if (showEditor) {
