@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import { PiCursorClick, PiCursor } from "react-icons/pi";
 import { FaRegHandPointer } from "react-icons/fa6";
 import { RiArrowGoBackFill, RiArrowGoForwardFill } from "react-icons/ri";
@@ -8,6 +8,60 @@ import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import {Projects} from "./Projects"
 import { GrContact } from "react-icons/gr";
+
+import emailjs from '@emailjs/browser';
+
+
+export const ContactUs = () => {
+  const form = useRef();
+  const [sending, setSend] = useState(false)
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setSend(true)
+
+    emailjs
+      .sendForm('service_dz58bth', 'template_ew1jbc9', form.current, {
+        publicKey: 'DbUfrS3beh_AGXJVC',
+      })
+      .then(
+        () => {
+          form.current.reset()
+          console.log('SUCCESS!');
+          setSend(false)
+
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
+
+  return (
+    <form ref={form} onSubmit={sendEmail} className = "">
+      <div className = "flex flex-row gap-3">
+        
+        <div className = "flex flex-col ">
+          <label required minlength = {2} className ="text-white">Name</label>
+          <input className = "bg-white w-3xs" type="text" name="user_name" />
+        </div>
+
+        <div className = "flex flex-col ">
+          <label className ="text-white">Email</label>
+          <input className = "bg-white w-3xs" required minlength = {2} type="email" name="user_email" />
+        </div>
+
+      </div>
+
+      <div className = "flex flex-col my-5">
+        <label className ="text-white">Message</label>
+        <textarea minlength = {10} className = "bg-white w-auto" name="message" />
+      </div>
+
+      <input type="submit" value="Send" disabled = {sending} className="bg-blue-300 py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer" />
+    </form>
+  );
+};
 
 
 
@@ -33,12 +87,7 @@ const Contact = ({setPage}) => {
       <h1 className = "font-mono text-white text-5xl border-b-3 border-white mb-3">
         Keen To Collaborate?
       </h1>
-      <h2 className = "font-mono text-white text-4xl">Editing and Post-Production Specialist</h2>
-
-      <h2 className = "mt-5 font-mono bg-blue-300 py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer"
-          onClick = {() => setPage("Projects")}>
-        View Projects <span className ="text-3xl p-0">&#8594;</span>
-      </h2>
+      <ContactUs/>
     </div>
   )
 }
@@ -141,7 +190,7 @@ const Option = ({Icon, name, isBig, onClick, current}) => {
 
 const OptionsBar = () => {
   return (
-  <div className = "flex flex-row pl-10 pt-3 gap-4">
+  <div className = "flex flex-row pl-10 py-2 gap-4">
     <Option Icon = {FaFileAlt} name = {"File"} isBig = {false}/>
     <Option Icon = {FaEye} name = {"View"} isBig = {false}/>
     <Option Icon = {FaPencilAlt} name = {"Edit"} isBig = {false}/>
