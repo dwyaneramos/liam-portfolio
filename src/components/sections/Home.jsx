@@ -138,12 +138,7 @@ const About = () => {
 
 
 
-export const Editor = ({showEditor}) => {
-  useEffect(() => {
-    if (showEditor) {
-      console.log("YSAY");
-    }
-  }, [showEditor])
+export const Editor = () => {
 
   const [page, setPage] = useState("Home")
   const lookup = {"Home" : Homepage, "About" : About, "Projects" : Projects, "Contact" : Contact}
@@ -151,7 +146,7 @@ export const Editor = ({showEditor}) => {
 
 
   return (
-    <div className = {`overflow-hidden max-h-0 bg-[#4c575c] ${showEditor ? "animate-display-editor" : ""}`}>
+    <div className = {` bg-[#4c575c]`}>
       <EditorHeader setPage = {setPage} page = {page}/>
       <div className = "flex flex-row h-screen">
         
@@ -188,13 +183,22 @@ const Option = ({Icon, name, isBig, onClick, current}) => {
   )
 }
 
+const VideoOption = ({Icon, name}) => {
+  return (
+    <div className = "flex flex-row gap-2  p-2 rounded-lg">
+      <Icon size={23} color={"white"}/>
+      <h1 className = "text-xl text-white">{name}</h1>
+    </div>
+  )
+}
+
 const OptionsBar = () => {
   return (
   <div className = "flex flex-row pl-10 py-2 gap-4">
-    <Option Icon = {FaFileAlt} name = {"File"} isBig = {false}/>
-    <Option Icon = {FaEye} name = {"View"} isBig = {false}/>
-    <Option Icon = {FaPencilAlt} name = {"Edit"} isBig = {false}/>
-    <Option Icon = {HiOutlineQuestionMarkCircle} name = {"Help"} isBig = {false}/>
+    <VideoOption Icon = {FaFileAlt} name = {"File"}/>
+    <VideoOption Icon = {FaEye} name = {"View"}/>
+    <VideoOption Icon = {FaPencilAlt} name = {"Edit"}/>
+    <VideoOption Icon = {HiOutlineQuestionMarkCircle} name = {"Help"}/>
   </div>
   )
 }
@@ -238,47 +242,6 @@ const File = ({header, onClick}) => {
   )
 }
 
-export const Toolbar = ({showEditor}) => {
-
-  const EditIconSize = 45;
-  const [changeIcon, setChangeIcon] = useState(false);
-  useEffect(() => {
-    if (showEditor) {
-      const timer = setTimeout(() => {
-        setChangeIcon(true);
-      }, 1500);
-
-
-
-    } else {
-      setChangeIcon(false);
-      return;
-    }
-
-    return () => clearTimeout(timer)
-
-    }, [showEditor])
-
-  const Icon1 = changeIcon == true ? FaLinkedin : RiArrowGoBackFill;
-  const Icon2 = changeIcon == true ? IoMailOutline : RiArrowGoForwardFill;
-  const Icon3 = changeIcon == true ? BsFillTelephoneFill : FaPlay;
-  const Icon4 = changeIcon == true ? FaPlay : FaStop;
-
-  
-
-  return (
-    <div className = {`absolute top-0 bg-[#4f5b61] min-h-20 max-h-20 py-3 min-w-screen flex
-          flex-row gap-10 items-align items-center z-0
-          ${showEditor ? "animate-move-toolbar" : ""}`}>
-
-      <Icon1 size = {EditIconSize} color = {"white"} className="ml-10"/>
-      <Icon2 size = {EditIconSize} color = {"white"}/>
-      <Icon3 size = {EditIconSize} color = {"white"}/>
-      <Icon4 size = {EditIconSize} color = {"white"}/>
-      
-    </div>
-  )
-}
 
 
 export const Cursor = ({stageNum}) => {
