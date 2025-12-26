@@ -26,7 +26,7 @@ const ProjectVideo = ({link}) => {
   return (
 
       <iframe
-        className ="w-[70vw] m-auto h-[80vh]"
+        className ="w-[70vw] m-auto h-[75vh]"
         src={link}
 
       />
