@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export const Timer = ({currTime, suffix, timeStyling}) => {
   let [hr, min, ss] = currTime.split(":")
-  if (suffix == "pm") {
+  if (suffix == "pm" && hr != "12") {
     hr = parseInt(hr) + 12
   }
   return (
@@ -45,7 +45,7 @@ const Bar = ({currTime, suffix}) => {
     const timeSplits = currTime.split(":")
     let secElapsed = parseInt(timeSplits[0]) * 60 * 60 + parseInt(timeSplits[1] ) * 60 + parseInt(timeSplits[2]) 
     const numHrsInDay = 24 * 60 * 60 
-    if (suffix == "pm") {
+    if (suffix == "pm" && timeSplits[0] != "12") {
       secElapsed += 12 * 60 * 60
     }
     const progress = secElapsed / numHrsInDay * 100
