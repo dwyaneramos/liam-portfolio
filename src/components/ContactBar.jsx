@@ -1,22 +1,37 @@
 
 
-import { IoMailOutline} from "react-icons/io5";
+import { IoMailOutline, IoPlaySkipBackSharp, IoPlaySkipForward} from "react-icons/io5";
 
-import {FaLinkedin} from "react-icons/fa";
+import {FaLinkedin, FaPlay} from "react-icons/fa";
+import {ProgressBar} from "./ProgressBar"
 
 export const ContactBar = () => {
   const IconSize = 50;
   return (
     <div className = "absolute bottom-0 bg-[#4f5b61] min-h-20 max-h-20 py-3 min-w-screen flex
-      flex-row gap-5 items-align items-center z-0">
+      flex-row gap-5 items-align items-center z-0 px-10 place-content-between">
+    
+    <div className = "flex flex-row gap-4 items-center w-full">
+      <IoPlaySkipBackSharp size= {IconSize} color = {'white'}/>
+      <FaPlay size= {IconSize - 5} color = {'white'}/>
+      <IoPlaySkipForward size = {IconSize} color = {'white'}/>
+      
+      <ProgressBar/>
+    </div>
 
-    <a href="mailto:riz3ndrr@gmail.com" className ="hover:-translate-y-1 transition">
-      <IoMailOutline size = {IconSize} color = {"white"} className="ml-10"/>
-    </a>
 
-    <a href="" className ="hover:-translate-y-1 transition">
-      <FaLinkedin size = {IconSize} color = {"white"}/>
-    </a>
+
+
+    <div className = "flex flex-row gap-4">
+      
+      <a href="mailto:riz3ndrr@gmail.com" className ="hover:-translate-y-1 transition">
+        <IoMailOutline size = {IconSize} color = {"white"} className=""/>
+      </a>
+
+      <a href="" className ="hover:-translate-y-1 transition">
+        <FaLinkedin size = {IconSize} color = {"white"}/>
+      </a>
+    </div>
     </div> 
   )
 }

@@ -8,7 +8,7 @@ export const Homepage = ({setPage}) => {
       </h1>
       <h2 className = "font-mono text-white text-4xl">Editing and Post-Production Specialist</h2>
 
-      <h2 className = "mt-5 font-mono bg-blue-300 py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer"
+      <h2 className = "mt-5 font-mono bg-blue-400 text-white py-2 px-5 rounded-xl hover:-translate-y-1 transition cursor-pointer"
           onClick = {() => setPage("Projects")}>
         View Projects <span className ="text-3xl p-0">&#8594;</span>
       </h2>

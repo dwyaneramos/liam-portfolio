@@ -3,7 +3,7 @@
 export const About = () => {
   const skills = ["Premiere Pro", "Photoshop", "AVID", "After Effects"]
   return (
-    <div className = "h-auto w-full bg-[#2b3033] flex flex-col text-center items-center py-10 gap-5">
+    <div className = "h-auto w-full bg-[#2b3033] flex flex-col text-center items-center py-40 gap-5">
       
       <p className = "text-white text-2xl w-[50%]">
         Kia Ora! I'm a recent film graduate based in Wellington and specialise in post-production editing.
@@ -30,8 +30,8 @@ export const About = () => {
 
             skills.map((skill, index) => {
               return (
-                <div key = {index} className = "text-white font-mono bg-blue-500 text-xl p-2 rounded-xl border-2 border-blue-700 hover:-translate-y-1 transition">
-                  {skill}
+                <div key = {index} className = "text-white font-mono text-xl rounded-xl">
+                  {skill}{index != skills.length - 1 && ","}
                 </div>
               )
             })

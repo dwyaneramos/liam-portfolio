@@ -14,7 +14,7 @@ export const NavBar = ({setPage, page}) => {
 const Option = ({Icon, name, isBig, onClick, current}) => {
   const iconSize = isBig ? 29 : 23
   const textSize = isBig ? "text-2xl" : "text-xl" 
-  const bg = current ? "bg-blue-300" : ""
+  const bg = current ? "bg-blue-400" : ""
 
   return (
     <div className = {`flex flex-row gap-2 hover:bg-gray-700 transition cursor-pointer p-2 rounded-lg ${bg}`} onClick = {onClick}>
