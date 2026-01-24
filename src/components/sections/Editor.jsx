@@ -24,7 +24,6 @@ export const Editor = ({page, setPage}) => {
     <div className = {` bg-[#4c575c]`}>
       <EditorHeader setPage = {setPage} page = {page}/>
       <div className = "flex flex-row h-screen">
-        
 
         <PageToDisplay setPage = {setPage}/>
 
