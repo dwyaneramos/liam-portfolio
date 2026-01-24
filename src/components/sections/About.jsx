@@ -1,17 +1,8 @@
 
-
-export const About = () => {
-  const skills = ["Premiere Pro", "Photoshop", "AVID", "After Effects"]
+const Education = () => {
   return (
-    <div className = "h-auto w-full bg-[#2b3033] flex flex-col text-center items-center py-40 gap-5">
-      
-      <p className = "text-white text-2xl w-[50%]">
-        Kia Ora! I'm a recent film graduate based in Wellington and specialise in post-production editing.
-        I'm passionate about bringing footage to life and creating a story through the means of editing.
-
-      </p>
-      <>
-        <h2 className = "text-white font-mono text-4xl border-b-2 border-white">Education</h2>
+      <div>
+        <h2 className = "text-white font-mono text-4xl border-b-2 mb-5 border-white">Education</h2>
           <div>
             <h1 className = "text-white font-mono text-3xl">Whitireia & WeiTec</h1>
             <h2 className = "text-white font-mono text-2xl">Diploma in Screen Production</h2>
@@ -21,8 +12,30 @@ export const About = () => {
             <h1 className = "text-white font-mono text-3xl">Waiuku College</h1>
             <h2 className = "text-white font-mono text-2xl">2017 - 2021</h2>
           </div>
-      </>
+      </div>
+  )
+}
 
+
+export const About = () => {
+  return (
+    <div className = "h-auto w-full bg-[#2b3033] flex flex-col text-center items-center py-40 gap-10">
+      <p className = "text-white text-2xl w-[50%]">
+        Kia Ora! I'm a recent film graduate based in Wellington and specialise in post-production editing.
+        I'm passionate about bringing footage to life and creating a story through the means of editing.
+
+      </p>
+
+      <Education/> 
+      <Skills/>
+    </div>
+  )
+}
+
+
+const Skills = () => {
+  const skills = ["Premiere Pro", "Photoshop", "AVID", "After Effects"]
+  return (
       <div>
         <h2 className = "text-white font-mono text-4xl border-b-2 border-white mb-5">Skills</h2>
         <div className = "flex flex-row flex-wrap gap-3">
@@ -38,8 +51,5 @@ export const About = () => {
         }
         </div>
       </div>
-    </div>
   )
 }
-
-

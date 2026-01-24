@@ -46,7 +46,7 @@ const VideoOption = ({Icon, name}) => {
 
 const OptionsBar = () => {
   return (
-  <div className = "flex flex-row pl-10 py-2 gap-4">
+  <div className = "hidden md:flex flex-row pl-10 py-2 gap-4">
     <VideoOption Icon = {FaFileAlt} name = {"File"}/>
     <VideoOption Icon = {FaEye} name = {"View"}/>
     <VideoOption Icon = {FaPencilAlt} name = {"Edit"}/>
@@ -62,7 +62,7 @@ const EditorHeader = ({setPage, page}) => {
       <div className = "flex flex-row bg-grey-700 border-b-1 border-gray-500">
         <OptionsBar/>
         <div className = " w-full  py-3">
-          <h1 className = "font-mono text-white text-2xl text-center  pr-90">Editing portfolio.mp4</h1>
+          <h1 className = "text-center w-full font-mono text-white text-2xl text-center  md:pr-90">Editing portfolio.mp4</h1>
         </div>
       </div>
 
