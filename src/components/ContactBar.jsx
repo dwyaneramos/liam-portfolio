@@ -6,17 +6,20 @@ import {FaLinkedin, FaPlay} from "react-icons/fa";
 import {ProgressBar} from "./ProgressBar"
 
 export const ContactBar = () => {
-  const IconSize = 50;
+  const SMALL = 640;
+  const screenSmall = window.screen.width <= SMALL
+  const IconSize = screenSmall ? 40 : 50;
   return (
     <div className = "absolute bottom-0 bg-[#4f5b61] min-h-20 max-h-20 py-3 min-w-screen flex
-      flex-row gap-5 items-align items-center z-0 px-10 place-content-between">
+      flex-row gap-5 items-align items-center z-0 md:px-10 px-5 place-content-between">
     
     <div className = "flex flex-row gap-4 items-center w-full">
       <IoPlaySkipBackSharp size= {IconSize} color = {'white'}/>
       <FaPlay size= {IconSize - 5} color = {'white'}/>
       <IoPlaySkipForward size = {IconSize} color = {'white'}/>
-      
-      <ProgressBar/>
+      <div className = "hidden md:inline w-full">
+        <ProgressBar/>
+      </div> 
     </div>
 
 
