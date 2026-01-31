@@ -15,9 +15,9 @@ export const ContactBar = () => {
     
     <div className = "flex flex-row gap-4 items-center w-full">
       <IoPlaySkipBackSharp size= {IconSize} color = {'white'}/>
-      <FaPlay size= {IconSize - 5} color = {'white'}/>
+      <FaPlay size= {IconSize - 10} color = {'white'}/>
       <IoPlaySkipForward size = {IconSize} color = {'white'}/>
-      <div className = "hidden md:inline w-full">
+      <div className = "hidden md:inline w-full pl-5">
         <ProgressBar/>
       </div> 
     </div>

@@ -37,7 +37,7 @@ export const Editor = ({page, setPage}) => {
 const VideoOption = ({Icon, name}) => {
   return (
     <div className = "flex flex-row gap-2  p-2 rounded-lg">
-      <Icon size={23} color={"white"}/>
+      <Icon size={23} color={"white"} className="mt-1"/>
       <h1 className = "text-xl text-white">{name}</h1>
     </div>
   )
