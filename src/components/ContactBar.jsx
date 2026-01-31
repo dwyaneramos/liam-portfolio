@@ -10,7 +10,7 @@ export const ContactBar = () => {
   const screenSmall = window.screen.width <= SMALL
   const IconSize = screenSmall ? 40 : 50;
   return (
-    <div className = "absolute bottom-0 bg-[#4f5b61] min-h-20 max-h-20 py-3 min-w-screen flex
+    <div className = "fixed bottom-0 bg-[#4f5b61] min-h-20 max-h-20 py-3 min-w-screen flex
       flex-row gap-5 items-align items-center z-0 md:px-10 px-5 place-content-between">
     
     <div className = "flex flex-row gap-4 items-center w-full">

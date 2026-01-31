@@ -19,7 +19,7 @@ const Education = () => {
 
 export const About = () => {
   return (
-    <div className = "h-auto w-full bg-[#2b3033] flex flex-col text-center items-center pt-5 xl:py-40 gap-10">
+    <section className = "h-screen w-full bg-[#2b3033] flex flex-col text-center items-center pt-5 xl:py-20 pb-60 overflow-y-scroll gap-10">
       <p className = "text-white text-lg md:text-2xl md:w-[50%] w-[90%]">
         Kia Ora! I'm a recent film graduate based in Wellington and specialise in post-production editing.
         I'm passionate about bringing footage to life and creating a story through the means of editing.
@@ -28,7 +28,7 @@ export const About = () => {
 
       <Education/> 
       <Skills/>
-    </div>
+    </section>
   )
 }
 

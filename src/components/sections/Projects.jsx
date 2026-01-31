@@ -3,10 +3,9 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 
 export const Projects = () => {
   const [displayProject, setDisplayProject] = useState(0)
-  const projects = [{header : "Price of Heaven", desc : "Film Project", role : "Lead Editor & Sound Designer", link : "https://www.youtube.com/embed/vtuiqkSTWs0?si=aAelF15unqxBT1xN" },
+  const projects = [{header : "Price of Heaven", desc : "Film Project", role : "Lead Editor & Sound Designer", link : "https://www.youtube.com/embed/N21Qxv34cas?si=WNnUpkvY_LZVyZ_G" },
                     {header : "Wellington Speedcubing", desc : "Documentary", role : "Director & Lead Editor", link : "https://www.youtube.com/embed/vtuiqkSTWs0?si=aAelF15unqxBT1xN" },
                     {header : "DARTZ - Bathsalts", desc : "Music Video", role : "Director & Lead Editor", link : "https://www.youtube.com/embed/UBFEcIIUd4k?si=RKiCdAnJoY7UlnYb"} ]
-
   const proj = projects[displayProject]
   const isMobile = window.innerWidth <= 640 ? true : false;
 
